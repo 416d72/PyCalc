@@ -10,9 +10,9 @@ class PyCalc(QDialog):
         loadUi("design.ui", self)
         self.setWindowTitle("PyCalc")
 
-    # @pyqtSlot()
-    # def on_push_button(self):
-    #     pass
+    @pyqtSlot()
+    def on_push_button(self):
+        pass
 
 
 app = QApplication(sys.argv)
