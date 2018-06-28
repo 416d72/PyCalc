@@ -1,1 +1,2 @@
-print(.4+.3)
+a = "1+2*8/4"
+print(int(eval(a)))
