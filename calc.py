@@ -1,13 +1,13 @@
 import sys
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QApplication, QDialog
+from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow
 from PyQt5.uic import loadUi
 
 
-class PyCalc(QDialog):
+class PyCalc(QMainWindow):
     def __init__(self):
         super(PyCalc, self).__init__()
-        loadUi("design.ui", self)
+        loadUi("Assets/design.ui", self)
         self.setWindowTitle("PyCalc")
 
     @pyqtSlot()
