@@ -258,7 +258,7 @@
      <enum>Qt::NoContextMenu</enum>
     </property>
     <property name="layoutDirection">
-     <enum>Qt::RightToLeft</enum>
+     <enum>Qt::LeftToRight</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
