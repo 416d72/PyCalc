@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt5.uic import loadUi
 
 
@@ -8,30 +8,31 @@ class PyCalc(QMainWindow):
     operation = ""
     full_operation = []
     operator_type = ""
+    operator_display_char = ""
 
     def __init__(self):
         super(PyCalc, self).__init__()
         loadUi("Assets/design.ui", self)
         self.setWindowTitle("PyCalc")
         self.zero.clicked.connect(self.btn0)
-        self.one.clicked.connect(self.btn1)
-        self.two.clicked.connect(self.btn2)
-        # self.three.clicked.connect(self.btn3)
-        # self.four.clicked.connect(self.btn4)
-        # self.five.clicked.connect(self.btn5)
-        # self.six.clicked.connect(self.btn6)
-        # self.seven.clicked.connect(self.btn7)
-        # self.eight.clicked.connect(self.btn8)
-        # self.nine.clicked.connect(self.btn9)
+        self.one.clicked.connect(lambda: self.num(1))
+        self.two.clicked.connect(lambda: self.num(2))
+        self.three.clicked.connect(lambda: self.num(3))
+        self.four.clicked.connect(lambda: self.num(4))
+        self.five.clicked.connect(lambda: self.num(5))
+        self.six.clicked.connect(lambda: self.num(6))
+        self.seven.clicked.connect(lambda: self.num(7))
+        self.eight.clicked.connect(lambda: self.num(8))
+        self.nine.clicked.connect(lambda: self.num(9))
         self.point.clicked.connect(self.btn_point)
         self.equal.clicked.connect(self.btn_equal)
-        self.plus.clicked.connect(self.set_operator("+"))
-        self.minus.clicked.connect(self.set_operator("-"))
-        self.multiply.clicked.connect(self.set_operator("*"))
-        self.divide.clicked.connect(self.set_operator("/"))
+        self.plus.clicked.connect(lambda: self.set_operator('+'))
+        self.minus.clicked.connect(lambda: self.set_operator("-"))
+        self.multiply.clicked.connect(lambda: self.set_operator("*"))
+        self.divide.clicked.connect(lambda: self.set_operator("/"))
         self.undo.clicked.connect(self.btn_undo)
         self.clear.clicked.connect(self.btn_clear)
-        # self.about.clicked.connect(self.btn_about)
+        self.about.triggered.connect(self.btn_about)
 
     @pyqtSlot()
     def btn0(self):
@@ -40,12 +41,8 @@ class PyCalc(QMainWindow):
                 self.operation += "0"
                 self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
 
-    def btn1(self):
-        self.operation += "1"
-        self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
-
-    def btn2(self):
-        self.operation += "2"
+    def num(self, number):
+        self.operation += str(number)
         self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
 
     def btn_point(self):
@@ -94,6 +91,17 @@ class PyCalc(QMainWindow):
         self.operation = ""
         self.full_operation.clear()
         self.output.setText("")
+
+    def btn_about(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("Created by @416d72")
+        msg.setInformativeText("This is a Simple desktop calculator app made with PyQT5 \n View source: ")
+        msg.setWindowTitle("About")
+        msg.setDetailedText("The details are as follows:")
+        msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        msg.exec_()
+        return
 
 
 app = QApplication(sys.argv)
