@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PyQt5.QtGui import QKeySequence
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QShortcut
 from PyQt5.uic import loadUi
 
 
@@ -14,6 +15,7 @@ class PyCalc(QMainWindow):
         super(PyCalc, self).__init__()
         loadUi("Assets/design.ui", self)
         self.setWindowTitle("PyCalc")
+        self.init_shortcuts()
         self.zero.clicked.connect(self.btn0)
         self.one.clicked.connect(lambda: self.num(1))
         self.two.clicked.connect(lambda: self.num(2))
@@ -35,6 +37,48 @@ class PyCalc(QMainWindow):
         self.about.triggered.connect(self.btn_about)
 
     @pyqtSlot()
+    def init_shortcuts(self):
+        self.shortcut = QShortcut(QKeySequence("F1"), self)
+        self.shortcut.activated.connect(self.btn_about)
+        self.shortcut = QShortcut(QKeySequence("0"), self)
+        self.shortcut.activated.connect(lambda: self.btn0())
+        self.shortcut = QShortcut(QKeySequence("1"), self)
+        self.shortcut.activated.connect(lambda: self.num(1))
+        self.shortcut = QShortcut(QKeySequence("2"), self)
+        self.shortcut.activated.connect(lambda: self.num(2))
+        self.shortcut = QShortcut(QKeySequence("3"), self)
+        self.shortcut.activated.connect(lambda: self.num(3))
+        self.shortcut = QShortcut(QKeySequence("4"), self)
+        self.shortcut.activated.connect(lambda: self.num(4))
+        self.shortcut = QShortcut(QKeySequence("5"), self)
+        self.shortcut.activated.connect(lambda: self.num(5))
+        self.shortcut = QShortcut(QKeySequence("6"), self)
+        self.shortcut.activated.connect(lambda: self.num(6))
+        self.shortcut = QShortcut(QKeySequence("7"), self)
+        self.shortcut.activated.connect(lambda: self.num(7))
+        self.shortcut = QShortcut(QKeySequence("8"), self)
+        self.shortcut.activated.connect(lambda: self.num(8))
+        self.shortcut = QShortcut(QKeySequence("9"), self)
+        self.shortcut.activated.connect(lambda: self.num(9))
+        self.shortcut = QShortcut(QKeySequence("."), self)
+        self.shortcut.activated.connect(lambda: self.btn_point())
+        self.shortcut = QShortcut(QKeySequence("+"), self)
+        self.shortcut.activated.connect(lambda: self.set_operator("+"))
+        self.shortcut = QShortcut(QKeySequence("-"), self)
+        self.shortcut.activated.connect(lambda: self.set_operator("-"))
+        self.shortcut = QShortcut(QKeySequence("*"), self)
+        self.shortcut.activated.connect(lambda: self.set_operator("*"))
+        self.shortcut = QShortcut(QKeySequence("/"), self)
+        self.shortcut.activated.connect(lambda: self.set_operator("/"))
+        self.shortcut = QShortcut(QKeySequence("="), self)
+        self.shortcut.activated.connect(lambda: self.btn_equal())
+        self.shortcut = QShortcut(QKeySequence("Enter"), self)
+        self.shortcut.activated.connect(lambda: self.btn_equal())
+        self.shortcut = QShortcut(QKeySequence("Esc"), self)
+        self.shortcut.activated.connect(lambda: self.btn_clear())
+        self.shortcut = QShortcut(QKeySequence("Backspace"), self)
+        self.shortcut.activated.connect(lambda: self.btn_undo())
+
     def btn0(self):
         if self.operation:
             if self.operation[0] != "0":
@@ -92,14 +136,18 @@ class PyCalc(QMainWindow):
         self.full_operation.clear()
         self.output.setText("")
 
-    def btn_about(self):
+    @staticmethod
+    def btn_about():
         msg = QMessageBox()
+        msg.setMinimumWidth(2000)
+        msg.setWindowTitle("About")
         msg.setIcon(QMessageBox.Information)
         msg.setText("Created by @416d72")
-        msg.setInformativeText("This is a Simple desktop calculator app made with PyQT5")
-        msg.setWindowTitle("About")
-        msg.setDetailedText("View source: ")
+        msg.setInformativeText('This is a Simple desktop calculator app made with PyQT5 <a '
+                               'href="https://github.com/@416d72/PyCalc">View source</a>')
+        msg.setDetailedText(" ")
         msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        msg.setDefaultButton(QMessageBox.Ok)
         msg.exec_()
         return
 
