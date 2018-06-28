@@ -37,13 +37,13 @@
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <property name="sizeConstraint">
-      <enum>QLayout::SetNoConstraint</enum>
+      <enum>QLayout::SetDefaultConstraint</enum>
      </property>
      <property name="spacing">
       <number>0</number>
      </property>
      <item row="2" column="0">
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="one">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -53,7 +53,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="two">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -63,7 +63,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QPushButton" name="pushButton_10">
+      <widget class="QPushButton" name="eight">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -73,7 +73,7 @@
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QPushButton" name="pushButton_6">
+      <widget class="QPushButton" name="four">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -83,7 +83,7 @@
       </widget>
      </item>
      <item row="4" column="2">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="point">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -102,7 +102,7 @@
       </widget>
      </item>
      <item row="2" column="2">
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="three">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -112,7 +112,7 @@
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton_9">
+      <widget class="QPushButton" name="seven">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -122,7 +122,7 @@
       </widget>
      </item>
      <item row="4" column="0" colspan="2">
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="zero">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -132,7 +132,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QPushButton" name="pushButton_7">
+      <widget class="QPushButton" name="five">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -142,7 +142,7 @@
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QPushButton" name="pushButton_11">
+      <widget class="QPushButton" name="nine">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -152,7 +152,7 @@
       </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QPushButton" name="pushButton_8">
+      <widget class="QPushButton" name="six">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -162,7 +162,7 @@
       </widget>
      </item>
      <item row="4" column="3" colspan="2">
-      <widget class="QPushButton" name="pushButton_12">
+      <widget class="QPushButton" name="equal">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -172,7 +172,7 @@
       </widget>
      </item>
      <item row="2" column="3">
-      <widget class="QPushButton" name="pushButton_13">
+      <widget class="QPushButton" name="plus">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -182,7 +182,7 @@
       </widget>
      </item>
      <item row="2" column="4">
-      <widget class="QPushButton" name="pushButton_14">
+      <widget class="QPushButton" name="minus">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -192,7 +192,7 @@
       </widget>
      </item>
      <item row="1" column="3">
-      <widget class="QPushButton" name="pushButton_15">
+      <widget class="QPushButton" name="multiply">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -202,7 +202,7 @@
       </widget>
      </item>
      <item row="1" column="4">
-      <widget class="QPushButton" name="pushButton_16">
+      <widget class="QPushButton" name="division">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -212,7 +212,7 @@
       </widget>
      </item>
      <item row="0" column="3">
-      <widget class="QPushButton" name="pushButton_17">
+      <widget class="QPushButton" name="undo">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -222,7 +222,7 @@
       </widget>
      </item>
      <item row="0" column="4">
-      <widget class="QPushButton" name="pushButton_18">
+      <widget class="QPushButton" name="clear">
        <property name="focusPolicy">
         <enum>Qt::NoFocus</enum>
        </property>
@@ -233,7 +233,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLCDNumber" name="lcdNumber">
+   <widget class="QLCDNumber" name="output">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -261,7 +261,7 @@
      <enum>QLCDNumber::Flat</enum>
     </property>
     <property name="value" stdset="0">
-     <double>746.899999999999977</double>
+     <double>0.000000000000000</double>
     </property>
    </widget>
   </widget>
@@ -278,7 +278,7 @@
     <property name="title">
      <string>About</string>
     </property>
-    <addaction name="actionAbout_F1"/>
+    <addaction name="about"/>
    </widget>
    <addaction name="menuAbout"/>
   </widget>
@@ -293,7 +293,10 @@
     <string>Basic</string>
    </property>
   </action>
-  <action name="actionAbout_F1">
+  <action name="about">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>About (F1)</string>
    </property>
