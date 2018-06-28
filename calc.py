@@ -100,7 +100,7 @@ class PyCalc(QMainWindow):
         if len(self.operation) > 0 or len(self.full_operation) > 0:
             self.full_operation.append(self.operation)
             self.operation = str(eval("".join(self.full_operation)))
-            self.output.setText("<h2><b>"+self.operation+"</b></h2>")
+            self.output.setText("<h2><b>" + self.operation + "</b></h2>")
             self.full_operation.clear()
 
     def set_operator(self, type_of_operator):
