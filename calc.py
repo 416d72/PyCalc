@@ -37,22 +37,22 @@ class PyCalc(QMainWindow):
         if self.operation:
             if self.operation[0] != "0":
                 self.operation += "0"
-        self.output.setText(self.operation)
+                self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
 
     def btn1(self):
         self.operation += "1"
-        self.output.setText(self.operation)
+        self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
 
     def btn2(self):
         self.operation += "2"
-        self.output.setText(self.operation)
+        self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
 
     def btn_point(self):
         if "." not in self.operation:
             if not self.operation:
                 self.operation += "0"
             self.operation += "."
-            self.output.setText(self.operation)
+            self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
 
     # def btn_equal(self):
     #     if self.operation[0] == 0:
@@ -63,23 +63,23 @@ class PyCalc(QMainWindow):
     def btn_plus(self):
         if self.operation:
             if self.operation[-1] not in "-+*/":
-                self.operation += "+"
-        self.output.setText(self.operation)
+                self.full_operation.append(self.operation + "+")
+                self.operation = ""
+        self.output.setText("".join(str(i) for i in self.full_operation))
 
     def btn_undo(self):
         if len(self.operation) > 0:
-            self.operation = self.operation[:-1]
-            self.output.setText(self.operation)
+            if len(self.full_operation) == 0:
+                self.operation = self.operation[:-1]
+                self.output.setText(self.operation)
+            else:
+                self.operation = self.operation[:-1]
+                self.output.setText("".join(str(i) for i in self.full_operation))
 
     def btn_clear(self):
         self.operation = ""
-        self.output.setText(self.operation)
-
-    # def btn_about(self):
-    #     if self.operation[0] == 0:
-    #         del (self.operation[0])
-    #     self.operation.append(2)
-    #     self.output.display("".join(str(i) for i in self.operation))
+        self.full_operation.clear()
+        self.output.setText("")
 
 
 app = QApplication(sys.argv)
