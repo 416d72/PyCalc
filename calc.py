@@ -96,9 +96,9 @@ class PyCalc(QMainWindow):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText("Created by @416d72")
-        msg.setInformativeText("This is a Simple desktop calculator app made with PyQT5 \n View source: ")
+        msg.setInformativeText("This is a Simple desktop calculator app made with PyQT5")
         msg.setWindowTitle("About")
-        msg.setDetailedText("The details are as follows:")
+        msg.setDetailedText("View source: ")
         msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         msg.exec_()
         return
