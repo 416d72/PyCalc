@@ -7,6 +7,7 @@ from PyQt5.uic import loadUi
 class PyCalc(QMainWindow):
     operation = ""
     full_operation = []
+    operator_type = ""
 
     def __init__(self):
         super(PyCalc, self).__init__()
@@ -23,11 +24,11 @@ class PyCalc(QMainWindow):
         # self.eight.clicked.connect(self.btn8)
         # self.nine.clicked.connect(self.btn9)
         self.point.clicked.connect(self.btn_point)
-        # self.equal.clicked.connect(self.btn_equal)
-        self.plus.clicked.connect(self.btn_plus)
-        # self.minus.clicked.connect(self.btn_minus)
-        # self.multiply.clicked.connect(self.btn_multiply)
-        # self.divide.clicked.connect(self.btn_divide)
+        self.equal.clicked.connect(self.btn_equal)
+        self.plus.clicked.connect(self.set_operator("+"))
+        self.minus.clicked.connect(self.set_operator("-"))
+        self.multiply.clicked.connect(self.set_operator("*"))
+        self.divide.clicked.connect(self.set_operator("/"))
         self.undo.clicked.connect(self.btn_undo)
         self.clear.clicked.connect(self.btn_clear)
         # self.about.clicked.connect(self.btn_about)
@@ -54,27 +55,40 @@ class PyCalc(QMainWindow):
             self.operation += "."
             self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
 
-    # def btn_equal(self):
-    #     if self.operation[0] == 0:
-    #         del (self.operation[0])
-    #     self.operation.append(2)
-    #     self.output.display("".join(str(i) for i in self.operation))
+    def btn_equal(self):
+        if len(self.operation) > 0 or len(self.full_operation) > 0:
+            self.full_operation.append(self.operation)
+            self.operation = str(eval("".join(self.full_operation)))
+            self.output.setText(self.operation)
+            self.full_operation.clear()
 
-    def btn_plus(self):
+    def set_operator(self, type_of_operator):
+        self.operator_type = type_of_operator
+        self.operator()
+
+    def operator(self):
         if self.operation:
             if self.operation[-1] not in "-+*/":
-                self.full_operation.append(self.operation + "+")
+                self.full_operation.append(self.operation + self.operator_type)
                 self.operation = ""
         self.output.setText("".join(str(i) for i in self.full_operation))
 
     def btn_undo(self):
         if len(self.operation) > 0:
+            self.operation = self.operation[:-1]
             if len(self.full_operation) == 0:
-                self.operation = self.operation[:-1]
                 self.output.setText(self.operation)
             else:
-                self.operation = self.operation[:-1]
-                self.output.setText("".join(str(i) for i in self.full_operation))
+                self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
+        else:
+            if len(self.full_operation) > 0:
+                if not self.full_operation[-1]:
+                    self.full_operation.pop()
+                self.full_operation[-1] = self.full_operation[-1][:-1]
+                if self.full_operation[-1][-1] not in "/*-+":
+                    self.operation = self.full_operation[-1]
+                    self.full_operation.pop()
+                self.output.setText("".join(str(i) for i in self.full_operation) + self.operation)
 
     def btn_clear(self):
         self.operation = ""
