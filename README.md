@@ -4,4 +4,5 @@ Just a simple desktop calculator app made with Python and QT
 - Install [Python](https://www.python.org/downloads)
 - Install [PyQt5](https://pypi.org/project/PyQt5)
 - Navigate to the repo directory, open your terminal/CMD and enter `python calc.py`
-** I tried with PyInstaller to make it executable but it did not work **
+
+**I tried with PyInstaller to make it executable but it did not work**
