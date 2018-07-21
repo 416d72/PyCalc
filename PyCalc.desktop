@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version = 1.0
+Name = PyCalc
+Exec = /home/amr/PycharmProjects/PyCalc/PyCalc/__init__.py
+Icon = /home/amr/PycharmProjects/PyCalc/PyCalc/Assets/logo.png
+Type = Application
