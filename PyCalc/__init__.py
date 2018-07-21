@@ -1,4 +1,5 @@
-#!/bin/env python3
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import sys
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QKeySequence
