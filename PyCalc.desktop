@@ -2,6 +2,6 @@
 [Desktop Entry]
 Version = 1.0
 Name = PyCalc
-Exec = /home/amr/PycharmProjects/Past_Projects/PyCalc/PyCalc/__main__.py
-Icon = /home/amr/PycharmProjects/Past_Projects/PyCalc/PyCalc/Assets/logo.png
+Exec = /home/amr/Dev/Python/Past_Projects/PyCalc/PyCalc/__main__.py
+Icon = /home/amr/Dev/Python/Past_Projects/PyCalc/PyCalc/Assets/logo.png
 Type = Application
