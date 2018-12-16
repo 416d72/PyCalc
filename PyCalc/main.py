@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
-
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import sys
+import os
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QShortcut
@@ -16,7 +16,7 @@ class PyCalc(QMainWindow):
 
     def __init__(self):
         super(PyCalc, self).__init__()
-        loadUi("Assets/design.ui", self)
+        loadUi(os.path.dirname(__file__)+"/Assets/design.ui", self)
         self.setWindowTitle("PyCalc")
         self.init_shortcuts()
         self.zero.clicked.connect(self.btn0)
